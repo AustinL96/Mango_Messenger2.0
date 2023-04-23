@@ -19,15 +19,16 @@ router.post('/dashboard/newGroupChat', async (req, res) => {
 
 //***Load Group Chat Page */
 router.get('/groupchat/:id', async (req, res) => {
-  const conversationId = req.params.id;
-  console.log(conversationId);
+  const chatRoomId = req.params.id;
+  // console.log(chatRoomId);
   try {
-    const conversationData = await Conversations.findByPk(conversationId, {
+    const conversationData = await Conversations.findByPk(chatRoomId, {
       raw: true
     })
-    console.log(conversationData);
+    // console.log(conversationData);
     res.render('private/groupchat', { 
-      conversation: conversationData 
+      conversation: conversationData,
+      chatRoomId: chatRoomId
     });
   } catch (err) {
     console.log(err);
@@ -37,20 +38,20 @@ router.get('/groupchat/:id', async (req, res) => {
 
 
 // Send a chat message
-router.post('/sendmessage', async (req, res) => {
-  const conversationId = req.body.conversation_id;
-  const senderId = req.session.user_id;
-  const message = req.body.message;
+// router.post('/sendmessage', async (req, res) => {
+//   const conversationId = req.body.conversation_id;
+//   const senderId = req.session.user_id;
+//   const message = req.body.message;
 
-  // Create the message and associate it with the conversation
-  const createdMessage = await Messages.create({
-    message_text: message,
-    sender: senderId,
-  });
-  const conversation = await Conversations.findByPk(conversationId);
-  await conversation.addMessage(createdMessage);
+//   // Create the message and associate it with the conversation
+//   const createdMessage = await Messages.create({
+//     message_text: message,
+//     sender: senderId,
+//   });
+//   const conversation = await Conversations.findByPk(conversationId);
+//   await conversation.addMessage(createdMessage);
 
-  res.redirect('/dashboard');
-});
+//   res.redirect('/dashboard');
+// });
 
 module.exports = router;

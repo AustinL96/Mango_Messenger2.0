@@ -19,10 +19,12 @@
     <form id="form" action="">
       <input id="message-input" type="text" autocomplete="off" /><button>Send</button>
     </form> --}}
-
-    <ul id="message-output" data-room="{{ roomNumber }}"></ul>
-    <form id="form" action="">
-        <input id="message-input" type="text" autocomplete="off" /><button>Send</button>
+    {{#with chatRoomId}}
+        <ul id="messageList" data-chatRoomId="{{ chatRoomId }}"></ul>
+    {{/with}}
+    <form id="messageForm" action="">
+        <input id="messageInput" type="text" autocomplete="off" />
+        <button>Send</button>
     </form>
     
     
