@@ -1,0 +1,29 @@
+{{!-- Similar to dashboard, contains a header with links --}}
+<header>
+    <h1>Mango Messaging
+    </h1>
+    <nav>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/logout">Logout</a>
+    </nav>
+</header>
+
+
+<main>
+    {{#with conversation}}
+    <h1>Group Chat {{conversation_id}}</h1>
+        <p>Group Name: {{conversation_name}}</p>
+    {{/with}}
+    
+    {{!-- <ul id="message-output"></ul>
+    <form id="form" action="">
+      <input id="message-input" type="text" autocomplete="off" /><button>Send</button>
+    </form> --}}
+
+    <ul id="message-output" data-room="{{ roomNumber }}"></ul>
+    <form id="form" action="">
+        <input id="message-input" type="text" autocomplete="off" /><button>Send</button>
+    </form>
+    
+    
+</main>

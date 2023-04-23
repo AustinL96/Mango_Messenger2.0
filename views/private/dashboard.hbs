@@ -1,0 +1,45 @@
+{{!-- This is the main dashboard that a user loads into after the user logs in
+
+The user will have visible to them a header with nav bar. From there the user can click on them to navigate to other pages --}}
+
+<header>
+    <h1>Mango Messaging
+    </h1>
+    <nav>
+        <a href="/private">Private Messaging</a>
+        <a href="/logout">Logout</a>
+    </nav>
+</header>
+
+<div class="greeting">
+    <h2>Group Chats</h2>
+    <p>Welcome back {{username}}, join the discussions below, or create a new one!</p>
+    <button id="newGroupChatBtn">Create a new Group Chat!</button>
+</div>
+{{!-- From there the user will have to things visible to them, one to the left that takes up the bulk of the page, as well as a list of usernames to the right --}}
+<main>
+    {{!-- Left section contains open group chats where anyone can participate. Clicking on one will let you join in. --}}
+    {{#each conversations}}
+    <div class="">
+        <div>
+            <h2 class="conversation-name" id="{{this.conversation_id}}">{{this.conversation_name}}</h2>
+        </div>
+    </div>
+    {{/each}}
+
+    
+    {{!-- Contains the userbase --}}
+    <div>
+        {{!-- For each user, render them on the page. Get this working at a basic level.
+        Then later on, display them with online users at the top (with an icon) and offline users at the bottom --}}
+        <ul class="userBase">
+            {{#each userBase}}
+                <li>{{this.username}} goes here</li>
+            {{/each}}
+        </ul>
+    </div>
+
+
+
+
+</main>

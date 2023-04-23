@@ -1,0 +1,37 @@
+{{!-- THIS IS THE LOGIN SCREEN 
+
+CONSISTS OF A FULL PAGE SPREAD OF OUR LOGO AND SOME PRETTY BACKGROUND
+
+HERE WILL BE A LOGIN AND SIGN UP OPTION FOR NEW USERS--}}
+
+<main class="indexStyles">
+    {{!-- leftside box that lets existing users login to the sites --}}
+    <div class="login">
+        <div class="loginHeader">
+            <h3>Already a member?<br>Login Below</h3>
+        </div>
+        <div class="loginForm">
+            {{!-- Sends post data from the form --}}
+            <form action="/login" method="POST">
+                <input name="email" type="email" placeholder="Enter your email address">
+                <input name="password" type="password" placeholder="Enter your password">
+                <button>Login</button>
+            </form>
+        </div>
+    </div>
+    {{!-- rightside box that lets new users create an account --}}
+    <div class="register">
+        <div class="registerHeader">
+            <h3>New Here?<br> Register Below</h3>
+        </div>
+        <div class="registerForm">
+            {{!-- Sends post data from the form --}}
+            <form action="/register" method="POST">
+                <input name="username" type="text" placeholder="Create your Username">
+                <input name="email" type="email" placeholder="Enter your email address">
+                <input name="password" type="password" placeholder="Enter your password">
+                <button>Register</button>
+            </form>
+        </div>
+    </div>
+</main>
