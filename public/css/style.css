@@ -79,3 +79,128 @@ body {
 #messages>li:nth-child(odd) {
   background: #efefef;
 }
+
+
+/* Mobile layout */
+@media screen and (max-width: 767px) {
+
+  /* Simplify the layout */
+  .indexStyles {
+    display: block;
+  }
+
+  /* Center the login/register header */
+  .loginHeader,
+  .registerHeader {
+    text-align: center;
+  }
+
+  /* Reduce the font size */
+  .loginHeader h3,
+  .registerHeader h3 {
+    font-size: 1.2rem;
+  }
+
+  /* Reduce the form height */
+  #form {
+    height: 2.5rem;
+  }
+
+  /* Reduce the input font size */
+  #input {
+    font-size: 0.8rem;
+  }
+
+  /* Reduce the button font size */
+  #form>button {
+    font-size: 0.8rem;
+  }
+
+  /* Reduce the message padding */
+  #messages>li {
+    padding: 0.25rem 0.5rem;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Moving mangos background */
+
+.container {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.bubbles {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* yellow mangos */
+.bubbles span {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  background: #ffa82f;
+  margin: 0 4px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 10px #ff9a0c,
+    0 0 50px #ffa82f,
+    0 0 100px #ffa82f;
+  animation: animate 20s linear infinite;
+  animation-duration: calc(70s / var(--i));
+}
+
+/* green mangos */
+.bubbles span:nth-child(even) {
+  background: #3c7e2b;
+  box-shadow: 0 0 0 10px #27511c,
+    0 0 50px #3c7e2b,
+    0 0 100px #3c7e2b;
+}
+
+@keyframes animate {
+  0% {
+    transform: translateY(100vh) scale(0);
+  }
+
+  100% {
+    transform: translateY(-10vh) scale(1);
+  }
+
+  0% {
+    transform: translateY(100vh) scale(0);
+  }
+
+  0% {
+    transform: translateY(100vh) scale(0);
+  }
+
+}
+
+
