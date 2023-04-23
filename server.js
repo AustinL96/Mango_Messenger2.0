@@ -55,31 +55,42 @@ io.use((socket, next) => {
   sessionMiddleware(socket.request, {}, next);
 });
 
-const { Users } = require("./models");
+const chatSockets = io.of('/chat');
 
+chatSockets.on('connection', (socket) => {
+  console.log('Socket connected');
+  
+  const chatRoomId = socket.handshake.query.chatRoomId;
+  console.log('Chat room ID:', chatRoomId);
 
-
-
-
-io.on("connection", (socket) => {
-  console.log("socket connected!");
-
-  socket.on("join_room", (roomNumber) => {
-    socket.join(roomNumber);
-  });
-
-  socket.on("chat_message", async (data) => {
-    const { user_id, text, roomNumber } = data;
-    const user = await Users.findByPk(user_id);
-
-    const message = await user.createMessage({
-      text,
-      roomNumber,
-    });
-
-    io.to(roomNumber).emit("chat_message", message);
+  socket.join(chatRoomId);
+  
+  socket.on('sendMessage', (data) => {
+    console.log('Message received:', data.message);
+    chatSockets.to(chatRoomId).emit('newMessage', data);
   });
 });
+
+
+// io.on("connection", (socket) => {
+//   console.log("socket connected!");
+
+//   socket.on("join_room", (roomNumber) => {
+//     socket.join(roomNumber);
+//   });
+
+//   socket.on("chat_message", async (data) => {
+//     const { user_id, text, roomNumber } = data;
+//     const user = await Users.findByPk(user_id);
+
+//     const message = await user.createMessage({
+//       text,
+//       roomNumber,
+//     });
+
+//     io.to(roomNumber).emit("chat_message", message);
+//   });
+// });
 
 
 
