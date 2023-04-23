@@ -19,8 +19,10 @@
     <form id="form" action="">
       <input id="message-input" type="text" autocomplete="off" /><button>Send</button>
     </form> --}}
+
+    {{ chatRoomId }}
     {{#with chatRoomId}}
-        <ul id="messageList" data-chatRoomId="{{ chatRoomId }}"></ul>
+        <ul id="messageList" data-chatroomid="{{ this }}"></ul>
     {{/with}}
     <form id="messageForm" action="">
         <input id="messageInput" type="text" autocomplete="off" />
