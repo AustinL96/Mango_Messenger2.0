@@ -1,13 +1,12 @@
-/* Colors the background of every page */
-body {
-  background-color: #ffb347;
+ /* Colors the background of every page */
+ body {
+  background-color: #FFB347;
   min-height: 100vh;
   margin: 0;
   padding-bottom: 3rem;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   font-weight: bold;
 }
-
 /********* Login page stylings */
 .mainLogo {
   font-size: 5rem;
@@ -15,38 +14,31 @@ body {
   color: white;
   -webkit-text-stroke: 2px black;
 }
-
 .login,
 .register {
   background-color: rgb(42, 111, 42);
-  width: 30%;
-  margin: 10 auto;
+  width: 90%;
+  margin: 10px auto;
   border: 1px solid black;
-  border-radius: 10px 10px;
+  border-radius: 10px;
 }
-
 .loginHeader,
 .registerHeader {
   text-align: center;
   color: lightgreen;
   -webkit-text-stroke: 2px black;
 }
-
 .loginHeader h3,
 .registerHeader h3 {
   font-size: 30px;
-  
 }
-
 .loginFormContainer,
 .registerFormContainer {
   background-color: lightgreen;
   padding: .75rem;
   border: 1px solid black;
   border-radius: 10px;
-
 }
-
 .loginForm,
 .registerForm {
   background-color: lightgreen;
@@ -55,46 +47,39 @@ body {
   width: 25em;
   margin: 0 auto;
 }
-
 /********* Dashboard page stylings */
 .mangoHeader {
-  background-color: #27511c;
+  background-color: #27511C;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0px 20px 0px 20px;
 }
-
 .mangoHeader h1 {
   color: white;
   -webkit-text-stroke: 2px black;
 }
 .logout {
   text-decoration: none;
-  color: #efefef;
+  color: #EFEFEF;
 }
-
 .greeting {
   background-color: rgb(42, 111, 42);
   padding: .5em;
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 .greeting p,
 .greeting button {
   margin: 0px 10px 0px 10px;
 }
-
 #newGroupChatBtn {
-  background-color: #ffc97d;
+  background-color: #FFC97D;
 }
 .newConvoForm {
   display: flex;
-  
 }
-
 .dashboardContainer {
   display: flex;
 }
@@ -102,7 +87,7 @@ body {
   flex: 8;
   display: flex;
   flex-direction: column;
-  background: #ffb347;
+  background: #FFB347;
 }
 .conversation-name {
   flex: 1;
@@ -113,17 +98,15 @@ body {
   margin: 5px auto;
   background-color: lightgreen;
 }
-
 .userContainer {
   flex: 2;
-  background-color: #ffb347;
+  background-color: #FFB347;
   display: flex;
   flex-direction: column;
   text-align: center;
 }
-
 .userContainer h2 {
-  color: #efefef;
+  color: #EFEFEF;
   border-bottom: 3px solid black;
 }
 .userBase {
@@ -135,10 +118,7 @@ body {
   text-align: center;
   padding: 0px;
 }
-
-
-
-/* *********Group Chat Styling**** */
+/* ********Group Chat Styling*** */
 nav {
   margin: 0px 15px 0px 15px;
   padding: 0px 15px 0px 15px;
@@ -146,7 +126,6 @@ nav {
 nav a {
   padding: 0px 15px 0px 15px;
 }
-
 .groupChatHeader {
   display: flex;
   justify-content: center;
@@ -154,19 +133,16 @@ nav a {
   background: rgb(42, 111, 42);
   color: lightgreen;
 }
-
 #message-output {
   list-style: none;
   color: black;
   padding: 0px
 }
-
 #message-output li {
-  background-color: #ffc370;
+  background-color: #FFC370;
   margin: 5px 0px 5px 0px;
   font-size: 1em;
 }
-
 /* Form styling */
 #form {
   background: rgba(0, 0, 0, 0.15);
@@ -181,7 +157,6 @@ nav a {
   backdrop-filter: blur(10px);
   display: flex;
 }
-
 #message-input {
   border: none;
   padding: 0 1rem;
@@ -189,11 +164,9 @@ nav a {
   border-radius: 2rem;
   margin: 0.25rem;
 }
-
 #input:focus {
   outline: none;
 }
-
 #form>button {
   background: #000000;
   border: none;
@@ -203,61 +176,48 @@ nav a {
   outline: none;
   color: #fff;
 }
-
-
-
-
 /* Mobile layout */
 @media screen and (max-width: 767px) {
-
   .conversation-name {
     width: 80%;
   }
-
   .userContainer {
     flex: 1;
   }
-
   /* Simplify the layout */
   .indexStyles {
     display: block;
   }
-
   /* Center the login/register header */
   .loginHeader,
   .registerHeader {
     text-align: center;
+    width: 90%;
+    margin: 10px auto;
   }
-
   /* Reduce the font size */
   .loginHeader h3,
   .registerHeader h3 {
     font-size: 1.2rem;
   }
-
   /* Reduce the form height */
   #form {
     height: 2.5rem;
   }
-
   /* Reduce the input font size */
   #input {
     font-size: 0.8rem;
   }
-
   /* Reduce the button font size */
   #form>button {
     font-size: 0.8rem;
   }
-
   /* Reduce the message padding */
   #messages>li {
     padding: 0.25rem 0.5rem;
   }
 }
-
 /* Moving mangos background */
-
 .container {
   position: relative;
   max-width: 1200px;
@@ -266,7 +226,6 @@ nav a {
   height: 100vh;
   overflow: hidden;
 }
-
 .bubbles {
   position: absolute;
   width: 100%;
@@ -276,47 +235,39 @@ nav a {
   align-items: center;
   flex-wrap: wrap;
 }
-
 /* yellow mangos */
 .bubbles span {
   position: relative;
-  width: 40px;
-  height: 40px;
-  background: #ffa82f;
-  margin: 0 4px;
+  width: 20px;
+  height: 20px;
+  margin: 0 2px;
+  background: #FFA82F;
+  margin: 0 2px;
   border-radius: 50%;
-  box-shadow: 0 0 0 10px #ff9a0c,
-    0 0 50px #ffa82f,
-    0 0 100px #ffa82f;
+  box-shadow: 0 0 0 5px #FF9A0C,
+    0 0 25px #FFA82F,
+    0 0 50px #FFA82F;
   animation: animate 20s linear infinite;
   animation-duration: calc(70s / var(--i));
 }
-
 /* green mangos */
 .bubbles span:nth-child(even) {
-  background: #3c7e2b;
-  box-shadow: 0 0 0 10px #27511c,
-    0 0 50px #3c7e2b,
-    0 0 100px #3c7e2b;
+  background: #3C7E2B;
+  box-shadow: 0 0 0 10px #27511C,
+    0 0 50px #3C7E2B,
+    0 0 100px #3C7E2B;
 }
-
 @keyframes animate {
   0% {
     transform: translateY(100vh) scale(0);
   }
-
   100% {
     transform: translateY(-10vh) scale(1);
   }
-
   0% {
     transform: translateY(100vh) scale(0);
   }
-
   0% {
     transform: translateY(100vh) scale(0);
   }
-
 }
-
-
