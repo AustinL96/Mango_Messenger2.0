@@ -1,19 +1,20 @@
 
 {{!-- Similar to dashboard, contains a header with links --}}
-<header>
+<header class="mangoHeader">
     <h1>Mango Messaging
     </h1>
     <nav>
-        <a href="/dashboard">Dashboard</a>
-        <a href="/logout">Logout</a>
+        <a class="logout" href="/dashboard">Dashboard</a>
+        <a class="logout" href="/logout">Logout</a>
     </nav>
 </header>
 
 
 <main>
     {{#with conversation}}
-    <h1>Group Chat {{conversation_id}}</h1>
+    <div class="groupChatHeader">
         <p>Group Name: {{conversation_name}}</p>
+    </div>
     {{/with}}
     
     {{!-- <ul id="message-output"></ul>

@@ -3,39 +3,37 @@
 
 The user will have visible to them a header with nav bar. From there the user can click on them to navigate to other pages --}}
 
-<header>
-    <h1>Mango Messaging
-    </h1>
+<header class="mangoHeader">
+    <h1>Mango Messaging</h1>
     <nav>
-        <a href="/private">Private Messaging</a>
-        <a href="/logout">Logout</a>
+        <a class="logout" href="/logout">Logout</a>
     </nav>
 </header>
 
-<div class="greeting">
-    <h2>Group Chats</h2>
-    <p>Welcome back {{username}}, join the discussions below, or create a new one!</p>
+<div id="greetingDiv" class="greeting">
+    <p>Welcome back {{username}}, join the chats below, or create a new one!</p>
     <button id="newGroupChatBtn">Create a new Group Chat!</button>
 </div>
 {{!-- From there the user will have to things visible to them, one to the left that takes up the bulk of the page, as well as a list of usernames to the right --}}
-<main>
+<main class="dashboardContainer">
     {{!-- Left section contains open group chats where anyone can participate. Clicking on one will let you join in. --}}
-    {{#each conversations}}
-    <div class="">
+    <div class="conversationContainer">
+        {{#each conversations}}
         <div>
             <h2 class="conversation-name" id="{{this.conversation_id}}">{{this.conversation_name}}</h2>
         </div>
+        {{/each}}
     </div>
-    {{/each}}
 
     
     {{!-- Contains the userbase --}}
-    <div>
+    <div class="userContainer">
         {{!-- For each user, render them on the page. Get this working at a basic level.
         Then later on, display them with online users at the top (with an icon) and offline users at the bottom --}}
+        <h2>Userbase</h2>
         <ul class="userBase">
             {{#each userBase}}
-                <li>{{this.username}} goes here</li>
+                <li>{{this.username}}</li>
             {{/each}}
         </ul>
     </div>
