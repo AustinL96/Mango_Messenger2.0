@@ -19,21 +19,26 @@ router.post('/dashboard/newGroupChat', isAuthenticated, async (req, res) => {
 })
 
 //***Load Group Chat Page */
+
 router.get('/groupchat/:id', isAuthenticated, async (req, res) => {
   const conversationId = req.params.id;
   console.log(conversationId);
+
   try {
-    const conversationData = await Conversations.findByPk(conversationId, {
+    const conversationData = await Conversations.findByPk(chatRoomId, {
       raw: true
+
     })
     console.log(conversationData);
     res.render('private/groupchat', {
       conversation: conversationData
+
     });
   } catch (err) {
     console.log(err);
     res.redirect('/dashboard');
   }
+
 })
 
 
@@ -52,6 +57,7 @@ router.post('/sendmessage', isAuthenticated, async (req, res) => {
   await conversation.addMessage(createdMessage);
 
   res.redirect('/dashboard');
+
 });
 
 module.exports = router;

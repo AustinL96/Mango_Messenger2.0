@@ -1,3 +1,4 @@
+
 /**
 * This file should be used for universal browser JS. If there is a specific page that has custom
 * elements that other hbs pages do not have, you'll get an error when trying to reference those elements
@@ -11,30 +12,34 @@
 
 
 
+//*** SOCKET STUFF */
 
+document.addEventListener('DOMContentLoaded', () => {
+  const chatRoomId = document.getElementById('messageList').dataset.chatroomid.toLowerCase();
+  console.log('Chat room ID:', chatRoomId);
 
+  const chatSocket = io('/chat', { query: { chatRoomId } });
 
+  chatSocket.on('connect', () => {
+    console.log('connected to socket');
+  });
 
-// Everything below this point JD helped with Code
+  chatSocket.on('newMessage', (data) => {
+    console.log('New message received:', data.message);
 
-// io.on((socket) => {
-//   socket.emit();
-// });
-// socket.on("chat_message", (message_data) => {
-//   messageOutput.insertAdjacentHTML(
-//     "beforeend",
-//     `
-//   <li>${message_data.text}</li>
-//   `
-//   );
-// });
+    const messageList = document.getElementById('messageList');
+    const newMessage = document.createElement('li');
+    newMessage.textContent = data.message;
+    messageList.appendChild(newMessage);
+  });
 
-// function chatMessage(e) {
-//   const message_text = e.target.value;
+  const messageForm = document.getElementById('messageForm');
+  const messageInput = document.getElementById('messageInput');
 
-//   socket.emit("chat_message", {
-//     text: message_text,
-//   });
-// }
-
-// messageInput.addEventListener("keydown", chatMessage);
+  messageForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    console.log('messageForm submitted');
+    chatSocket.emit('sendMessage', { message: messageInput.value });
+    console.log('Message emitted:', messageInput.value);
+  });
+});

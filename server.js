@@ -56,6 +56,7 @@ io.use((socket, next) => {
   sessionMiddleware(socket.request, {}, next);
 });
 
+
 io.on("connection", (socket) => {
   console.log("socket connected!");
   let roomNumber;
@@ -237,3 +238,4 @@ db.sync({ force: false }).then(() => {
 //     socket.emit('chat_message', message);
 //   });
 // });
+
