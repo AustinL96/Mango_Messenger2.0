@@ -12,6 +12,7 @@ const auth_routes = require("./controllers/auth_routes");
 const view_routes = require("./controllers/view_routes");
 const chat_routes = require("./controllers/chat_routes");
 const path = require("path");
+const { Users, Conversations, Messages } = require("./models");
 
 const app = express();
 const http = require("http");
@@ -35,7 +36,7 @@ app.engine(
   "hbs",
   engine({
     //Enable shortname extensions - ie. index.hbs vs index.handlebars
-    extname: ".hbs",
+    extname: ".hbs"
   })
 );
 app.set("view engine", "hbs");
@@ -55,33 +56,55 @@ io.use((socket, next) => {
   sessionMiddleware(socket.request, {}, next);
 });
 
-const { Users } = require("./models");
-
-
-
-
-
 io.on("connection", (socket) => {
   console.log("socket connected!");
+  let roomNumber;
 
-  socket.on("join_room", (roomNumber) => {
+  // Listener to get the convo_id/room number from the client/browser
+  socket.on("join_room", async (convo_id) => {
+    // Set the room number for tracking of messages from the specific client connections
+    roomNumber = convo_id;
+    // Get the conversation (if found) and include the messages and attach the users
+    const conversation = await Conversations.findByPk(convo_id, {
+      include: {
+        model: Messages,
+        // This will attach the user to the message and only include the username
+        include: {
+          model: Users,
+          attributes: ['username']
+        }
+      }
+    });
+
+    // Send the chat history if there is any
+    if (conversation) socket.emit('chat_history', conversation.Messages);
+
+    // Join the room number
     socket.join(roomNumber);
   });
 
   socket.on("chat_message", async (data) => {
-    const { user_id, text, roomNumber } = data;
-    const user = await Users.findByPk(user_id);
+    const { message_text, conversation_id } = data;
+    const user = await Users.findByPk(socket.request.session.user_id);
 
+    // Create the message and attach the sender and conversation id
     const message = await user.createMessage({
-      text,
-      roomNumber,
+      conversation_id,
+      sender: user.id,
+      message_text
     });
 
-    io.to(roomNumber).emit("chat_message", message);
+    // Send the message to the specific room number
+    io.to(roomNumber).emit("chat_message", {
+      message,
+      username: user.username
+    });
   });
 });
 
-
+db.sync({ force: false }).then(() => {
+  server.listen(PORT, () => console.log("Server started on %s", PORT));
+});
 
 
 
@@ -121,9 +144,7 @@ io.on("connection", (socket) => {
 
 
 
-db.sync().then(() => {
-  server.listen(PORT, () => console.log("Server started on %s", PORT));
-});
+
 
 
 

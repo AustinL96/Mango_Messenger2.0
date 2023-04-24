@@ -1,3 +1,4 @@
+
 {{!-- Similar to dashboard, contains a header with links --}}
 <header>
     <h1>Mango Messaging
@@ -17,13 +18,21 @@
     
     {{!-- <ul id="message-output"></ul>
     <form id="form" action="">
-      <input id="message-input" type="text" autocomplete="off" /><button>Send</button>
+      <input id="message-input" type="text" autocomplete="off" />
+      <button>Send</button>
     </form> --}}
 
     <ul id="message-output" data-room="{{ roomNumber }}"></ul>
     <form id="form" action="">
-        <input id="message-input" type="text" autocomplete="off" /><button>Send</button>
+        <input id="message-input" type="text" autocomplete="off" />
+        <button id="chat-btn">Send</button>
     </form>
     
     
 </main>
+
+<!-- We need the socket.io cdn link to load it in -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.js"
+    integrity="sha512-xbQU0+iHqhVt7VIXi6vBJKPh3IQBF5B84sSHdjKiSccyX/1ZI7Vnkt2/8y8uruj63/DVmCxfUNohPNruthTEQA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="/js/chat.js"></script>
