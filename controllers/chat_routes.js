@@ -25,7 +25,7 @@ router.get('/groupchat/:id', isAuthenticated, async (req, res) => {
   console.log(conversationId);
 
   try {
-    const conversationData = await Conversations.findByPk(chatRoomId, {
+    const conversationData = await Conversations.findByPk(conversationId, {
       raw: true
 
     })
