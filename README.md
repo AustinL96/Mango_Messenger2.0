@@ -21,7 +21,12 @@ You will need a code editor like Visual Studio Code. Then node js and mySql inst
 Take the template for the .env file and have it match your mySQL username and password. Then generate your database by logging into your mySQL shell and running "source ./db/schema.sql;" and making the database. Then go back to your node js terminal and write "npm run dev" and navigate to your localhost in the browser. From there you can use it locally as described in the Usage step below.
 
 ## Usage
-Follow this link to the deployed [webisite!](https://lit-headland-28469.herokuapp.com/) From there you can register as a new user, and if you wish to, create a new chat room. Or you can enter a previously made one and see all of its previously sent messages, including the usernames of who sent them.
+Follow this link to the deployed [website!](https://lit-headland-28469.herokuapp.com/) From there you can register as a new user, and if you wish to, create a new chat room. Or you can enter a previously made one and see all of its previously sent messages, including the usernames of who sent them.
+
+Below are some screenshots of the finished website!
+![alt text](./assets/HomePage.png)
+![alt text](./assets/Dashboard.png)
+![alt text](./assets/GroupChat.png)
 
 ## Contributions
  * Robert Palmer - [Palm717](https://github.com/Palm717)
